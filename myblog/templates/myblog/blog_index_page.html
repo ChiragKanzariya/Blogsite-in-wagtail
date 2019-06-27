@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">{{ blogindexpages.page.blog_index_title }}<h1>
+        <div class="lead">{{ blogindexpages.page.blog_index_subtitle|richtext }}</div>
+    </div>
+    <div class="container">
+        <!-- All Blogs  -->
+        {% if blogs %}
+            {% for blog in blogs %}
+                <!-- Show First Language on pageload -->
+                {% if languagepages|first|stringformat:"s" == language.language_title|stringformat:"s" %}
+                    <div id="my{{ language.language_title }}" class="mt-5">
+                        <h2>{{ language.language_title }} Syntax</h2>
+                        <p>{{ language.content }}</p>
+                        <h2>What is {{ language.language_title }}?</h2>
+                        <p>{{ language.language_content_detail }}</p>
+                        <h2>{{ language.language_title }} detail</h2>
+                        <p>{{ language.language_extra_detail|richtext }}</p>
+                    </div>
+                <!-- Show Laguages as a button with hide content -->
+                {% else %}
+                    <div id="my{{ language.language_title }}" hidden class="mt-5">
+                        <h2>{{ language.language_title }} Syntax</h2>
+                        <p>{{ language.content }}</p>
+                        <h2>What is {{ language.language_title }}?</h2>
+                        <p>{{ language.language_content_detail }}</p>
+                        <h2>{{ language.language_title }} detail</h2>
+                        <p>{{ language.language_extra_detail|richtext }}</p>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        <!-- If not Language -->
+        {% else %}
+            <p>
+                <h1 class="jumbotron">Add <i>Blog(s)</i> in Wagtail Admin :-)</h1>
+            </p>
+        {% endif %}
+    </div>
+{% endblock content %}
