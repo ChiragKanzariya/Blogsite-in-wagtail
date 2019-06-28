@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark bg-dark">
+    <form class="form-inline">
+        <a href="/blog/" style="color: rgb(0, 255, 179);"><button class="btn btn-outline-success" type="button"> Home </button></a>
+    </form>
+</nav>
+
+<div class="container" style="margin-top: 30px;">
+    {% if request.GET.tag|length %}
+    <h4>Showing pages tagged "{{ request.GET.tag }}"</h4>
+    {% endif %}
+
+    {% for blog in blogs %}
+
+    <p class="jumbotron">
+        <strong class="h1"><a href="{% pageurl blog %}" style="color: rgb(82, 145, 124);">{{ blog.blog_title }}</a></strong><br />
+        <small>Revised: {{ blog.latest_revision_created_at }}</small><br />
+    </p>
+
+    {% empty %}
+    No pages found with that tag.
+    {% endfor %}
+</div>
+
+{% endblock %}

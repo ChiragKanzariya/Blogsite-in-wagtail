@@ -7,37 +7,30 @@
         <h1 class="display-4">{{ blogindexpages.page.blog_index_title }}<h1>
         <div class="lead">{{ blogindexpages.page.blog_index_subtitle|richtext }}</div>
     </div>
-    <div class="container">
+    <nav class="navbar navbar-dark bg-dark">
+        <form class="form-inline">
+            <a href="/blog/" style="color: rgb(0, 255, 179);"><button class="btn btn-outline-success" type="button"> Home </button></a>
+        </form>
+    </nav>
+    
+    <div class="container" style="margin-top: 30px;">
         <!-- All Blogs  -->
         {% if blogs %}
+            <h2 class="jumbotron" style="text-align: center;padding-top:5px !important;padding-bottom:5px !important;">List of Blogs</h2>
             {% for blog in blogs %}
-                <!-- Show First Language on pageload -->
-                {% if languagepages|first|stringformat:"s" == language.language_title|stringformat:"s" %}
-                    <div id="my{{ language.language_title }}" class="mt-5">
-                        <h2>{{ language.language_title }} Syntax</h2>
-                        <p>{{ language.content }}</p>
-                        <h2>What is {{ language.language_title }}?</h2>
-                        <p>{{ language.language_content_detail }}</p>
-                        <h2>{{ language.language_title }} detail</h2>
-                        <p>{{ language.language_extra_detail|richtext }}</p>
-                    </div>
-                <!-- Show Laguages as a button with hide content -->
-                {% else %}
-                    <div id="my{{ language.language_title }}" hidden class="mt-5">
-                        <h2>{{ language.language_title }} Syntax</h2>
-                        <p>{{ language.content }}</p>
-                        <h2>What is {{ language.language_title }}?</h2>
-                        <p>{{ language.language_content_detail }}</p>
-                        <h2>{{ language.language_title }} detail</h2>
-                        <p>{{ language.language_extra_detail|richtext }}</p>
-                    </div>
-                {% endif %}
-
+                <div class="jumbotron">
+                    <h2><a href="{% pageurl blog %}" style="color: rgb(82, 145, 124);">{{ blog.blog_title }}</a></h2>
+                    <p>created at:</p>
+                    <h3>This blog is published at {{ blog.blog_date }}</h3>
+                    <p>created by:</p>
+                    <h3>{{ blog.blog_creator_name }}</h3>
+                </div>
             {% endfor %}
         <!-- If not Language -->
         {% else %}
             <p>
                 <h1 class="jumbotron">Add <i>Blog(s)</i> in Wagtail Admin :-)</h1>
+                <button class="btn btn-primary"><a href="127.0.0.0:8000/admin">Click here</a></button>
             </p>
         {% endif %}
     </div>

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
+
+{% block content %}
+
+    <!-- Blog Title and Subtitle -->
+    <div class="jumbotron">
+        <h1 class="display-4" style="color: rgb(47, 143, 143);">{{ page.blog_title }}<h1>
+        <div class="lead">{{ page.blog_subtitle }}</div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <form class="form-inline">
+            <a href="/blog/" style="color: rgb(0, 255, 179);"><button class="btn btn-outline-success" type="button"> Home </button></a>
+        </form>
+    </nav>
+    <div class="container" style="margin-top: 30px;">
+        <div class="page-header">
+            <h1 style="color:rgb(124, 179, 160);">{{ page.blog_creator_name }}</h1>
+            <p>created by:</p> 
+            <hr size="6" width="100%" color="black">     
+        </div>
+    </div>  
+
+    <div class="container">
+        <!-- Blog Category -->
+        <div>
+            {% with categories=page.blog_categories.all %} 
+                {% if categories %}
+                    <h3>Blog Category:</h3>
+                    <ul>
+                        {% for category in categories %}
+                        <li style="display: inline">
+                        {% image category.icon fill-32x32 style="vertical-align: middle" %}
+                        {{ category.name }}
+                        </li>
+                        {% endfor %}
+                        <li style="float:right;list-style-type:none;">
+                                <h3>created at: {{ page.blog_date }}</h3>
+                        </li>
+                        <hr>
+                    </ul>
+                {% endif %} 
+            {% endwith %}
+        </div>
+
+        <!-- Blog Body -->
+        <div class="jumbotron">
+            <p>{{ page.blog_body|richtext }}</p>
+        </div>
+
+        <!-- Blog Content (videos/images) -->
+        {% if page.blog_content %}
+        <div class="jumbotron d-flex align-items-center flex-column" style="padding-bottom:0px !important;padding-top:0px !important;">
+                <p>{{ page.blog_content|richtext }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Extra Blog Detail if Added -->
+        <div>
+            {% if page.extra_detail %}
+                <div>
+                    {% for item in page.extra_detail.all %}
+                    <div class="jumbotron">
+                        <h3>{{ item.add_subtitle }}</h3> 
+                        <p>{{ item.add_more_content|richtext }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Blog Tags -->
+        <div>
+            {% if page.tags.all.count %}
+            <div class=" tags">
+            <h2>Blog related Tags</h2>
+            <p>You want related this blog post than click below tags.</p>
+            {% for tag in page.tags.all %}
+            <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+            {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <hr>
+    </div>
+
+{% endblock %}
