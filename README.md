@@ -1,5 +1,5 @@
 # Blogsite-in-wagtail
 
-Click here to check Blogsite
+Copy and paste to your browser to check Blogsite
     
     https://secure-mesa-17257.herokuapp.com
