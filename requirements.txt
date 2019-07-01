@@ -21,7 +21,7 @@ cycler==0.10.0
 daphne==2.2.5
 dj-database-url==0.5.0
 dj-static==0.0.6
-Django==2.2
+Django==2.2.2
 django-appconf==1.0.3
 django-bootstrap4==0.0.8
 django-debug-toolbar==1.11
@@ -94,10 +94,10 @@ sphinxcontrib-websupport==1.1.0
 SQLAlchemy==1.2.16
 sqlparse==0.2.4
 static3==0.7.0
-Twisted==18.9.0
+Twisted==19.2.1
 txaio==18.8.1
 Unidecode==1.0.23
-urllib3==1.24.1
+urllib3==1.24.2
 wagtail==2.5.1
 wagtail-embed-videos==0.4.2
 webencodings==0.5.1
