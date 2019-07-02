@@ -11,7 +11,7 @@
 
 <div class="container" style="margin-top: 30px;">
     {% if request.GET.tag|length %}
-    <h4>Showing pages tagged "{{ request.GET.tag }}"</h4>
+        <h3>Showing pages tagged <h1 style="color: rgb(87, 119, 174);">"{{ request.GET.tag }}"</h1></h3>
     {% endif %}
 
     {% for blog in blogs %}
