@@ -24,7 +24,7 @@ dj-static==0.0.6
 Django==2.2.2
 django-appconf==1.0.3
 django-bootstrap4==0.0.8
-django-debug-toolbar==1.11
+django-debug-toolbar==1.11.1
 django-ipware==2.1.0
 django-jsonfield==1.1.0
 django-modelcluster==4.4
