@@ -58,7 +58,7 @@ MarkupSafe==1.1.0
 matplotlib==3.0.2
 mccabe==0.6.1
 packaging==19.0
-Pillow==5.4.1
+Pillow==8.2.0
 pinax-stripe==4.4.0
 postgres==2.2.2
 powerline-status==2.7
