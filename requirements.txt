@@ -62,7 +62,7 @@ Pillow==5.4.1
 pinax-stripe==4.4.0
 postgres==2.2.2
 powerline-status==2.7
-protobuf==3.6.1
+protobuf==3.18.3
 psycopg2==2.8.3
 psycopg2-binary==2.7.7
 py-vapid==1.4.0
